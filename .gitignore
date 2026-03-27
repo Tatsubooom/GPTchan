@@ -410,3 +410,4 @@ FodyWeavers.xsd
 *models/
 *onnxruntime/
 *.wav
+SubRolls.txt
