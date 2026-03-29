@@ -11,7 +11,7 @@ GPTchan
 
 ## プロジェクトについて
 
-Discord上で動作する、GPTAPI内蔵の
+Discord上で動作する、GPTAPI内蔵のチャットボットです。
 
   <p align="left">
     <br />
