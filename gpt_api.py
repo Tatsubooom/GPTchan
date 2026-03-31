@@ -3,8 +3,7 @@ from dotenv import load_dotenv
 import os
 
 preresponce_id = None
-def createTextResponse(input_message):
-    global preresponce_id
+def createTextResponse(input_message,personal_log):
     load_dotenv()
     api_key = os.getenv("OPENAI_API_KEY")
     GPTclient = OpenAI()
@@ -12,30 +11,17 @@ def createTextResponse(input_message):
     rollfile = open('SubRolls.txt', 'r', encoding='utf-8')
     rolltext = rollfile.read()
 
-    if preresponce_id:
+    try:
         response = GPTclient.responses.create(
         model="gpt-4.1",
-        instructions="日本語,口語調,100文字以内" + rolltext,
+        instructions= f"日本語,口語調,100文字以内,{rolltext}\n{personal_log}",
         input=input_message,
         max_output_tokens=400,
         temperature=0.2,
-        previous_response_id = preresponce_id
         )
-        preresponce_id = response.id
 
-    else:
-        response = GPTclient.responses.create(
-            model="gpt-4.1",
-            instructions="日本語,口語調,100文字以内" + rolltext,
-            input=input_message,
-            max_output_tokens=400,
-            temperature=0.2,
-        )
-        preresponce_id = response.id
-
-    rollfile.close()
-
-    if response.error != None:
-        return response.error
+        rollfile.close()
+    except Exception as e:
+        print(f"APIエラー: {e}")
     
     return response.output_text
