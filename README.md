@@ -42,6 +42,13 @@ OpenAIのGPT APIを使用してテキスト応答を生成し、同時にVoiceVo
 [詳しくはこちら](https://github.com/VOICEVOX/voicevox_core/releases)
 <p align="right">(<a href="#top">トップへ</a>)</p>
 
+### FFmpegの導入（音声再生に必須）
+Discordのボイスチャンネルで音声を再生するために、外部ツールのFFmpegが必要です。
+
+1. [FFmpegのビルド配布サイト](https://www.gyan.dev/ffmpeg/builds/) から `ffmpeg-release-essentials.zip` をダウンロードして解凍します。
+2. フォルダ内（`bin` の中）にある **`ffmpeg.exe`** を取り出します。
+3. このプロジェクトのディレクトリ直下（`discord_bot.py` と同じ場所）に `ffmpeg.exe` を配置してください。
+
 ## 副次ファイル・機能
 
 - **.envファイル**: APIキーやDB情報を記載。以下を記載すること。

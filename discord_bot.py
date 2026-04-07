@@ -252,7 +252,9 @@ async def leave(ctx):
 async def on_voice_state_update(member,before,after):
     global voiceclient
     if voiceclient == None: return
-    if len(voiceclient.channel.members) <= 1:
+    if member.id == client.user.id: return
+
+    if voiceclient.channel and len(voiceclient.channel.members) <= 1:
         await voiceclient.disconnect()
         voiceclient = None
 

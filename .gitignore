@@ -411,3 +411,6 @@ FodyWeavers.xsd
 *onnxruntime/
 *.wav
 SubRolls.txt
+
+# FFmpeg binary
+ffmpeg.exe
