@@ -151,6 +151,7 @@ async def get_conver(user_id, channel_id):
 
     return current_conv,personal_conv_text
 
+#会話ログ保存
 async def save_chat_log(message,reply = None):
     conn = db_pool.get_connection()
     try:
