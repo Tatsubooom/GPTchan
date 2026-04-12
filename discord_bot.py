@@ -164,6 +164,13 @@ async def save_chat_log(message,reply = None):
                     VALUES(%s,%s,%s,%s,%s)
                 """
                 cursor.execute(save_chat_query,(message.author.id,message.author.display_name,message.channel.id,message.content,reply))
+
+                delete_old_chat_query = """
+                    DELETE FROM DCdatabase.chat_logs 
+                    WHERE (created_at < DATE_SUB(CURDATE(), INTERVAL 3 MONTH));
+                """
+                cursor.execute(delete_old_chat_query)
+                
                 conn.commit()
             except Error as e:
                 print(f"ログ取得エラー: {e}")
