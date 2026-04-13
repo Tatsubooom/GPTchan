@@ -2,16 +2,14 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
-preresponce_id = None
 def createTextResponse(input_message,personal_log):
     load_dotenv()
-    api_key = os.getenv("OPENAI_API_KEY")
     GPTclient = OpenAI()
 
     with open('SubRolls.txt', 'r', encoding='utf-8') as rollfile:
         rolltext = rollfile.read()
     
-    with open('BaclContext', 'r', encoding='utf-8') as contextfile:
+    with open('BackContext', 'r', encoding='utf-8') as contextfile:
         backcontext = contextfile.read()
 
     try:
@@ -23,7 +21,6 @@ def createTextResponse(input_message,personal_log):
         temperature=0.2,
         )
 
-        rollfile.close()
     except Exception as e:
         print(f"APIエラー: {e}")
     
